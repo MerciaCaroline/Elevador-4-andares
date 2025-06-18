@@ -46,6 +46,7 @@ void atualizarLedsChamadas(){
   desligarLedsDoAndar(1);
   desligarLedsDoAndar(2);
   desligarLedsDoAndar(3);
+  desligarLedsDoAndar(4);
 
     if (descer[2]) ligarLed(LED_P2_DESCE);
     if (descer[3]) ligarLed(LED_P3_DESCE);

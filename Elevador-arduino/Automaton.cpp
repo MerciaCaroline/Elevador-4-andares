@@ -50,11 +50,11 @@ void getEventControllable(Event &eventControllable){
 
 
 void getEventUncontrollable(Event &eventUncontrollable){
-	if(EventUncontrollable_s_1()){
-		setBit(eventUncontrollable,EVENT_S_1, true);
-	}
 	if(EventUncontrollable_s_2()){
 		setBit(eventUncontrollable,EVENT_S_2, true);
+	}
+	if(EventUncontrollable_s_1()){
+		setBit(eventUncontrollable,EVENT_S_1, true);
 	}
 	if(EventUncontrollable_s_3()){
 		setBit(eventUncontrollable,EVENT_S_3, true);
@@ -86,7 +86,7 @@ void Automaton2Loop_Porta(int State){
 	ActionAutomatons2[State]();
 }
 
-void Automaton3Loop_SupAndaresMotorPortaEspecificacaoSegurancaAndarMaximo4EspecificacaoSegurancaAndarMinimo1Portae2Portae1(int State){
+void Automaton3Loop_SupAndaresMotorPortaEspecificacaoSegurancaAndarMaximo4EspecificacaoSegurancaAndarMinimo1Portae2Portae3Portae1(int State){
 	ActionAutomatons3[State]();
 }
 
@@ -97,23 +97,14 @@ int MakeTransitionAutomaton0_Motor(int State, Event eventOccurred)
 	if (State == 0 && (getBit(eventOccurred,EVENT_SUBIR))){ 
 		return 1;
 	}
-	if (State == 0 && (getBit(eventOccurred,EVENT_PARAR))){ 
-		return 0;
-	}
 	if (State == 0 && (getBit(eventOccurred,EVENT_DESCER))){ 
 		return 2;
-	}
-	if (State == 1 && (getBit(eventOccurred,EVENT_SUBIR))){ 
-		return 1;
 	}
 	if (State == 1 && (getBit(eventOccurred,EVENT_PARAR))){ 
 		return 0;
 	}
 	if (State == 2 && (getBit(eventOccurred,EVENT_PARAR))){ 
 		return 0;
-	}
-	if (State == 2 && (getBit(eventOccurred,EVENT_DESCER))){ 
-		return 2;
 	}
 
 	return(State);
@@ -121,17 +112,11 @@ int MakeTransitionAutomaton0_Motor(int State, Event eventOccurred)
 
 int MakeTransitionAutomaton1_Andares(int State, Event eventOccurred) 
 { 
-	if (State == 0 && (getBit(eventOccurred,EVENT_S_1))){ 
-		return 0;
-	}
 	if (State == 0 && (getBit(eventOccurred,EVENT_S_2))){ 
 		return 1;
 	}
 	if (State == 1 && (getBit(eventOccurred,EVENT_S_1))){ 
 		return 0;
-	}
-	if (State == 1 && (getBit(eventOccurred,EVENT_S_2))){ 
-		return 1;
 	}
 	if (State == 1 && (getBit(eventOccurred,EVENT_S_3))){ 
 		return 2;
@@ -139,17 +124,11 @@ int MakeTransitionAutomaton1_Andares(int State, Event eventOccurred)
 	if (State == 2 && (getBit(eventOccurred,EVENT_S_2))){ 
 		return 1;
 	}
-	if (State == 2 && (getBit(eventOccurred,EVENT_S_3))){ 
-		return 2;
-	}
 	if (State == 2 && (getBit(eventOccurred,EVENT_S_4))){ 
 		return 3;
 	}
 	if (State == 3 && (getBit(eventOccurred,EVENT_S_3))){ 
 		return 2;
-	}
-	if (State == 3 && (getBit(eventOccurred,EVENT_S_4))){ 
-		return 3;
 	}
 
 	return(State);
@@ -157,298 +136,172 @@ int MakeTransitionAutomaton1_Andares(int State, Event eventOccurred)
 
 int MakeTransitionAutomaton2_Porta(int State, Event eventOccurred) 
 { 
-	if (State == 0 && (getBit(eventOccurred,EVENT_FECHAR_PORTA))){ 
-		return 0;
-	}
 	if (State == 0 && (getBit(eventOccurred,EVENT_ABRIR_PORTA))){ 
 		return 1;
 	}
 	if (State == 1 && (getBit(eventOccurred,EVENT_FECHAR_PORTA))){ 
 		return 0;
-	}
-	if (State == 1 && (getBit(eventOccurred,EVENT_ABRIR_PORTA))){ 
-		return 1;
 	}
 
 	return(State);
 }
 
-int MakeTransitionAutomaton3_SupAndaresMotorPortaEspecificacaoSegurancaAndarMaximo4EspecificacaoSegurancaAndarMinimo1Portae2Portae1(int State, Event eventOccurred) 
+int MakeTransitionAutomaton3_SupAndaresMotorPortaEspecificacaoSegurancaAndarMaximo4EspecificacaoSegurancaAndarMinimo1Portae2Portae3Portae1(int State, Event eventOccurred) 
 { 
-	if (State == 0 && (getBit(eventOccurred,EVENT_S_1))){ 
-		return 0;
-	}
 	if (State == 0 && (getBit(eventOccurred,EVENT_S_2))){ 
-		return 3;
-	}
-	if (State == 0 && (getBit(eventOccurred,EVENT_FECHAR_PORTA))){ 
-		return 0;
+		return 16;
 	}
 	if (State == 0 && (getBit(eventOccurred,EVENT_SUBIR))){ 
-		return 14;
-	}
-	if (State == 0 && (getBit(eventOccurred,EVENT_PARAR))){ 
-		return 0;
-	}
-	if (State == 0 && (getBit(eventOccurred,EVENT_ABRIR_PORTA))){ 
-		return 1;
-	}
-	if (State == 1 && (getBit(eventOccurred,EVENT_S_1))){ 
 		return 1;
 	}
 	if (State == 1 && (getBit(eventOccurred,EVENT_S_2))){ 
-		return 2;
-	}
-	if (State == 1 && (getBit(eventOccurred,EVENT_FECHAR_PORTA))){ 
-		return 0;
+		return 17;
 	}
 	if (State == 1 && (getBit(eventOccurred,EVENT_PARAR))){ 
-		return 1;
-	}
-	if (State == 1 && (getBit(eventOccurred,EVENT_ABRIR_PORTA))){ 
-		return 1;
-	}
-	if (State == 2 && (getBit(eventOccurred,EVENT_S_1))){ 
-		return 1;
+		return 2;
 	}
 	if (State == 2 && (getBit(eventOccurred,EVENT_S_2))){ 
-		return 2;
-	}
-	if (State == 2 && (getBit(eventOccurred,EVENT_S_3))){ 
-		return 7;
-	}
-	if (State == 2 && (getBit(eventOccurred,EVENT_FECHAR_PORTA))){ 
 		return 3;
-	}
-	if (State == 2 && (getBit(eventOccurred,EVENT_PARAR))){ 
-		return 2;
 	}
 	if (State == 2 && (getBit(eventOccurred,EVENT_ABRIR_PORTA))){ 
-		return 2;
+		return 19;
 	}
 	if (State == 3 && (getBit(eventOccurred,EVENT_S_1))){ 
-		return 0;
-	}
-	if (State == 3 && (getBit(eventOccurred,EVENT_S_2))){ 
-		return 3;
-	}
-	if (State == 3 && (getBit(eventOccurred,EVENT_S_3))){ 
-		return 6;
-	}
-	if (State == 3 && (getBit(eventOccurred,EVENT_FECHAR_PORTA))){ 
-		return 3;
-	}
-	if (State == 3 && (getBit(eventOccurred,EVENT_SUBIR))){ 
-		return 13;
-	}
-	if (State == 3 && (getBit(eventOccurred,EVENT_PARAR))){ 
-		return 3;
-	}
-	if (State == 3 && (getBit(eventOccurred,EVENT_DESCER))){ 
-		return 4;
-	}
-	if (State == 3 && (getBit(eventOccurred,EVENT_ABRIR_PORTA))){ 
 		return 2;
 	}
-	if (State == 4 && (getBit(eventOccurred,EVENT_S_1))){ 
-		return 15;
+	if (State == 3 && (getBit(eventOccurred,EVENT_S_3))){ 
+		return 5;
 	}
-	if (State == 4 && (getBit(eventOccurred,EVENT_S_2))){ 
+	if (State == 3 && (getBit(eventOccurred,EVENT_ABRIR_PORTA))){ 
 		return 4;
+	}
+	if (State == 4 && (getBit(eventOccurred,EVENT_S_1))){ 
+		return 19;
 	}
 	if (State == 4 && (getBit(eventOccurred,EVENT_S_3))){ 
-		return 5;
+		return 7;
 	}
 	if (State == 4 && (getBit(eventOccurred,EVENT_FECHAR_PORTA))){ 
-		return 4;
-	}
-	if (State == 4 && (getBit(eventOccurred,EVENT_PARAR))){ 
-		return 3;
-	}
-	if (State == 4 && (getBit(eventOccurred,EVENT_DESCER))){ 
-		return 4;
+		return 16;
 	}
 	if (State == 5 && (getBit(eventOccurred,EVENT_S_2))){ 
-		return 4;
-	}
-	if (State == 5 && (getBit(eventOccurred,EVENT_S_3))){ 
-		return 5;
-	}
-	if (State == 5 && (getBit(eventOccurred,EVENT_S_4))){ 
-		return 10;
-	}
-	if (State == 5 && (getBit(eventOccurred,EVENT_FECHAR_PORTA))){ 
-		return 5;
-	}
-	if (State == 5 && (getBit(eventOccurred,EVENT_PARAR))){ 
-		return 6;
-	}
-	if (State == 5 && (getBit(eventOccurred,EVENT_DESCER))){ 
-		return 5;
-	}
-	if (State == 6 && (getBit(eventOccurred,EVENT_S_2))){ 
 		return 3;
 	}
+	if (State == 5 && (getBit(eventOccurred,EVENT_S_4))){ 
+		return 6;
+	}
+	if (State == 5 && (getBit(eventOccurred,EVENT_ABRIR_PORTA))){ 
+		return 7;
+	}
 	if (State == 6 && (getBit(eventOccurred,EVENT_S_3))){ 
-		return 6;
-	}
-	if (State == 6 && (getBit(eventOccurred,EVENT_S_4))){ 
-		return 9;
-	}
-	if (State == 6 && (getBit(eventOccurred,EVENT_FECHAR_PORTA))){ 
-		return 6;
-	}
-	if (State == 6 && (getBit(eventOccurred,EVENT_SUBIR))){ 
-		return 11;
-	}
-	if (State == 6 && (getBit(eventOccurred,EVENT_PARAR))){ 
-		return 6;
-	}
-	if (State == 6 && (getBit(eventOccurred,EVENT_DESCER))){ 
 		return 5;
 	}
 	if (State == 6 && (getBit(eventOccurred,EVENT_ABRIR_PORTA))){ 
-		return 7;
+		return 8;
 	}
 	if (State == 7 && (getBit(eventOccurred,EVENT_S_2))){ 
-		return 2;
-	}
-	if (State == 7 && (getBit(eventOccurred,EVENT_S_3))){ 
-		return 7;
+		return 4;
 	}
 	if (State == 7 && (getBit(eventOccurred,EVENT_S_4))){ 
 		return 8;
 	}
 	if (State == 7 && (getBit(eventOccurred,EVENT_FECHAR_PORTA))){ 
-		return 6;
-	}
-	if (State == 7 && (getBit(eventOccurred,EVENT_PARAR))){ 
-		return 7;
-	}
-	if (State == 7 && (getBit(eventOccurred,EVENT_ABRIR_PORTA))){ 
-		return 7;
+		return 9;
 	}
 	if (State == 8 && (getBit(eventOccurred,EVENT_S_3))){ 
 		return 7;
 	}
-	if (State == 8 && (getBit(eventOccurred,EVENT_S_4))){ 
-		return 8;
-	}
 	if (State == 8 && (getBit(eventOccurred,EVENT_FECHAR_PORTA))){ 
-		return 9;
+		return 10;
 	}
-	if (State == 8 && (getBit(eventOccurred,EVENT_PARAR))){ 
-		return 8;
-	}
-	if (State == 8 && (getBit(eventOccurred,EVENT_ABRIR_PORTA))){ 
-		return 8;
-	}
-	if (State == 9 && (getBit(eventOccurred,EVENT_S_3))){ 
-		return 6;
+	if (State == 9 && (getBit(eventOccurred,EVENT_S_2))){ 
+		return 16;
 	}
 	if (State == 9 && (getBit(eventOccurred,EVENT_S_4))){ 
-		return 9;
+		return 10;
 	}
-	if (State == 9 && (getBit(eventOccurred,EVENT_FECHAR_PORTA))){ 
-		return 9;
-	}
-	if (State == 9 && (getBit(eventOccurred,EVENT_PARAR))){ 
-		return 9;
+	if (State == 9 && (getBit(eventOccurred,EVENT_SUBIR))){ 
+		return 14;
 	}
 	if (State == 9 && (getBit(eventOccurred,EVENT_DESCER))){ 
-		return 10;
-	}
-	if (State == 9 && (getBit(eventOccurred,EVENT_ABRIR_PORTA))){ 
-		return 8;
+		return 12;
 	}
 	if (State == 10 && (getBit(eventOccurred,EVENT_S_3))){ 
-		return 5;
-	}
-	if (State == 10 && (getBit(eventOccurred,EVENT_S_4))){ 
-		return 10;
-	}
-	if (State == 10 && (getBit(eventOccurred,EVENT_FECHAR_PORTA))){ 
-		return 10;
-	}
-	if (State == 10 && (getBit(eventOccurred,EVENT_PARAR))){ 
 		return 9;
 	}
 	if (State == 10 && (getBit(eventOccurred,EVENT_DESCER))){ 
-		return 10;
-	}
-	if (State == 11 && (getBit(eventOccurred,EVENT_S_2))){ 
-		return 13;
+		return 11;
 	}
 	if (State == 11 && (getBit(eventOccurred,EVENT_S_3))){ 
-		return 11;
-	}
-	if (State == 11 && (getBit(eventOccurred,EVENT_S_4))){ 
 		return 12;
-	}
-	if (State == 11 && (getBit(eventOccurred,EVENT_FECHAR_PORTA))){ 
-		return 11;
-	}
-	if (State == 11 && (getBit(eventOccurred,EVENT_SUBIR))){ 
-		return 11;
 	}
 	if (State == 11 && (getBit(eventOccurred,EVENT_PARAR))){ 
 		return 6;
 	}
-	if (State == 12 && (getBit(eventOccurred,EVENT_S_3))){ 
-		return 11;
+	if (State == 12 && (getBit(eventOccurred,EVENT_S_2))){ 
+		return 13;
 	}
 	if (State == 12 && (getBit(eventOccurred,EVENT_S_4))){ 
-		return 12;
-	}
-	if (State == 12 && (getBit(eventOccurred,EVENT_FECHAR_PORTA))){ 
-		return 12;
-	}
-	if (State == 12 && (getBit(eventOccurred,EVENT_PARAR))){ 
-		return 9;
-	}
-	if (State == 13 && (getBit(eventOccurred,EVENT_S_1))){ 
-		return 14;
-	}
-	if (State == 13 && (getBit(eventOccurred,EVENT_S_2))){ 
-		return 13;
-	}
-	if (State == 13 && (getBit(eventOccurred,EVENT_S_3))){ 
 		return 11;
 	}
-	if (State == 13 && (getBit(eventOccurred,EVENT_FECHAR_PORTA))){ 
-		return 13;
+	if (State == 12 && (getBit(eventOccurred,EVENT_PARAR))){ 
+		return 5;
 	}
-	if (State == 13 && (getBit(eventOccurred,EVENT_SUBIR))){ 
-		return 13;
+	if (State == 13 && (getBit(eventOccurred,EVENT_S_1))){ 
+		return 18;
+	}
+	if (State == 13 && (getBit(eventOccurred,EVENT_S_3))){ 
+		return 12;
 	}
 	if (State == 13 && (getBit(eventOccurred,EVENT_PARAR))){ 
 		return 3;
 	}
-	if (State == 14 && (getBit(eventOccurred,EVENT_S_1))){ 
-		return 14;
-	}
 	if (State == 14 && (getBit(eventOccurred,EVENT_S_2))){ 
-		return 13;
+		return 17;
 	}
-	if (State == 14 && (getBit(eventOccurred,EVENT_FECHAR_PORTA))){ 
-		return 14;
-	}
-	if (State == 14 && (getBit(eventOccurred,EVENT_SUBIR))){ 
-		return 14;
+	if (State == 14 && (getBit(eventOccurred,EVENT_S_4))){ 
+		return 15;
 	}
 	if (State == 14 && (getBit(eventOccurred,EVENT_PARAR))){ 
-		return 0;
+		return 5;
 	}
-	if (State == 15 && (getBit(eventOccurred,EVENT_S_1))){ 
-		return 15;
-	}
-	if (State == 15 && (getBit(eventOccurred,EVENT_S_2))){ 
-		return 4;
-	}
-	if (State == 15 && (getBit(eventOccurred,EVENT_FECHAR_PORTA))){ 
-		return 15;
+	if (State == 15 && (getBit(eventOccurred,EVENT_S_3))){ 
+		return 14;
 	}
 	if (State == 15 && (getBit(eventOccurred,EVENT_PARAR))){ 
+		return 6;
+	}
+	if (State == 16 && (getBit(eventOccurred,EVENT_S_1))){ 
+		return 0;
+	}
+	if (State == 16 && (getBit(eventOccurred,EVENT_S_3))){ 
+		return 9;
+	}
+	if (State == 16 && (getBit(eventOccurred,EVENT_SUBIR))){ 
+		return 17;
+	}
+	if (State == 16 && (getBit(eventOccurred,EVENT_DESCER))){ 
+		return 13;
+	}
+	if (State == 17 && (getBit(eventOccurred,EVENT_S_1))){ 
+		return 1;
+	}
+	if (State == 17 && (getBit(eventOccurred,EVENT_S_3))){ 
+		return 14;
+	}
+	if (State == 17 && (getBit(eventOccurred,EVENT_PARAR))){ 
+		return 3;
+	}
+	if (State == 18 && (getBit(eventOccurred,EVENT_S_2))){ 
+		return 13;
+	}
+	if (State == 18 && (getBit(eventOccurred,EVENT_PARAR))){ 
+		return 2;
+	}
+	if (State == 19 && (getBit(eventOccurred,EVENT_S_2))){ 
+		return 4;
+	}
+	if (State == 19 && (getBit(eventOccurred,EVENT_FECHAR_PORTA))){ 
 		return 0;
 	}
 

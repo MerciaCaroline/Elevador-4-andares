@@ -29,39 +29,43 @@ Event eventOccurred = createEvent();
 Automaton automata[NUMBER_AUTOMATON];
 Automaton supervisor[NUMBER_SUPERVISOR];
 
-uint8_t eventDataAUT0EV0[2] = {0b11111111, 0b11111111};
-uint8_t eventDataAUT0EV1[2] = {0b11111111, 0b10111111};
-uint8_t eventDataAUT0EV2[2] = {0b11111110, 0b11111111};
+uint8_t eventDataAUT0EV0[2] = {0b11111111, 0b01111111};
+uint8_t eventDataAUT0EV1[2] = {0b11111110, 0b10111111};
+uint8_t eventDataAUT0EV2[2] = {0b11111110, 0b10111111};
 
 Event enabledEventStatesAutomaton0[3] = { createEventFromData(eventDataAUT0EV0), createEventFromData(eventDataAUT0EV1), createEventFromData(eventDataAUT0EV2)};
-uint8_t eventDataAUT1EV0[2] = {0b11111111, 0b11110011};
-uint8_t eventDataAUT1EV1[2] = {0b11111111, 0b11111011};
-uint8_t eventDataAUT1EV2[2] = {0b11111111, 0b11011111};
-uint8_t eventDataAUT1EV3[2] = {0b11111111, 0b11001111};
+uint8_t eventDataAUT1EV0[2] = {0b11111111, 0b11100011};
+uint8_t eventDataAUT1EV1[2] = {0b11111111, 0b11011011};
+uint8_t eventDataAUT1EV2[2] = {0b11111111, 0b11100111};
+uint8_t eventDataAUT1EV3[2] = {0b11111111, 0b11001011};
 
 Event enabledEventStatesAutomaton1[4] = { createEventFromData(eventDataAUT1EV0), createEventFromData(eventDataAUT1EV1), createEventFromData(eventDataAUT1EV2), createEventFromData(eventDataAUT1EV3)};
-uint8_t eventDataAUT2EV0[2] = {0b11111111, 0b11111111};
-uint8_t eventDataAUT2EV1[2] = {0b11111111, 0b11111111};
+uint8_t eventDataAUT2EV0[2] = {0b11111111, 0b11111101};
+uint8_t eventDataAUT2EV1[2] = {0b11111111, 0b11111110};
 
 Event enabledEventStatesAutomaton2[2] = { createEventFromData(eventDataAUT2EV0), createEventFromData(eventDataAUT2EV1)};
-uint8_t eventDataAUT3EV0[2] = {0b11111111, 0b10110011};
-uint8_t eventDataAUT3EV1[2] = {0b11111110, 0b10110011};
-uint8_t eventDataAUT3EV2[2] = {0b11111110, 0b10111011};
-uint8_t eventDataAUT3EV3[2] = {0b11111111, 0b11111011};
-uint8_t eventDataAUT3EV4[2] = {0b11111110, 0b11111010};
-uint8_t eventDataAUT3EV5[2] = {0b11111110, 0b11011110};
-uint8_t eventDataAUT3EV6[2] = {0b11111111, 0b11011111};
-uint8_t eventDataAUT3EV7[2] = {0b11111110, 0b10011111};
-uint8_t eventDataAUT3EV8[2] = {0b11111110, 0b10001111};
-uint8_t eventDataAUT3EV9[2] = {0b11111110, 0b11001111};
-uint8_t eventDataAUT3EV10[2] = {0b11111110, 0b11001110};
-uint8_t eventDataAUT3EV11[2] = {0b11111111, 0b10011110};
-uint8_t eventDataAUT3EV12[2] = {0b11111110, 0b10001110};
-uint8_t eventDataAUT3EV13[2] = {0b11111111, 0b10111010};
-uint8_t eventDataAUT3EV14[2] = {0b11111111, 0b10110010};
-uint8_t eventDataAUT3EV15[2] = {0b11111110, 0b10110010};
+uint8_t eventDataAUT3EV0[2] = {0b11111111, 0b00100000};
+uint8_t eventDataAUT3EV1[2] = {0b11111110, 0b10100000};
+uint8_t eventDataAUT3EV2[2] = {0b11111110, 0b00100001};
+uint8_t eventDataAUT3EV3[2] = {0b11111110, 0b00011001};
+uint8_t eventDataAUT3EV4[2] = {0b11111110, 0b00011010};
+uint8_t eventDataAUT3EV5[2] = {0b11111110, 0b00100101};
+uint8_t eventDataAUT3EV6[2] = {0b11111110, 0b00001001};
+uint8_t eventDataAUT3EV7[2] = {0b11111110, 0b00100110};
+uint8_t eventDataAUT3EV8[2] = {0b11111110, 0b00001010};
+uint8_t eventDataAUT3EV9[2] = {0b11111111, 0b01100100};
+uint8_t eventDataAUT3EV10[2] = {0b11111110, 0b01001000};
+uint8_t eventDataAUT3EV11[2] = {0b11111110, 0b10001000};
+uint8_t eventDataAUT3EV12[2] = {0b11111110, 0b10100100};
+uint8_t eventDataAUT3EV13[2] = {0b11111110, 0b10011000};
+uint8_t eventDataAUT3EV14[2] = {0b11111110, 0b10100100};
+uint8_t eventDataAUT3EV15[2] = {0b11111110, 0b10001000};
+uint8_t eventDataAUT3EV16[2] = {0b11111111, 0b01011000};
+uint8_t eventDataAUT3EV17[2] = {0b11111110, 0b10011000};
+uint8_t eventDataAUT3EV18[2] = {0b11111110, 0b10100000};
+uint8_t eventDataAUT3EV19[2] = {0b11111110, 0b00100010};
 
-Event enabledEventStatesAutomaton3[16] = { createEventFromData(eventDataAUT3EV0), createEventFromData(eventDataAUT3EV1), createEventFromData(eventDataAUT3EV2), createEventFromData(eventDataAUT3EV3), createEventFromData(eventDataAUT3EV4), createEventFromData(eventDataAUT3EV5), createEventFromData(eventDataAUT3EV6), createEventFromData(eventDataAUT3EV7), createEventFromData(eventDataAUT3EV8), createEventFromData(eventDataAUT3EV9), createEventFromData(eventDataAUT3EV10), createEventFromData(eventDataAUT3EV11), createEventFromData(eventDataAUT3EV12), createEventFromData(eventDataAUT3EV13), createEventFromData(eventDataAUT3EV14), createEventFromData(eventDataAUT3EV15)};
+Event enabledEventStatesAutomaton3[20] = { createEventFromData(eventDataAUT3EV0), createEventFromData(eventDataAUT3EV1), createEventFromData(eventDataAUT3EV2), createEventFromData(eventDataAUT3EV3), createEventFromData(eventDataAUT3EV4), createEventFromData(eventDataAUT3EV5), createEventFromData(eventDataAUT3EV6), createEventFromData(eventDataAUT3EV7), createEventFromData(eventDataAUT3EV8), createEventFromData(eventDataAUT3EV9), createEventFromData(eventDataAUT3EV10), createEventFromData(eventDataAUT3EV11), createEventFromData(eventDataAUT3EV12), createEventFromData(eventDataAUT3EV13), createEventFromData(eventDataAUT3EV14), createEventFromData(eventDataAUT3EV15), createEventFromData(eventDataAUT3EV16), createEventFromData(eventDataAUT3EV17), createEventFromData(eventDataAUT3EV18), createEventFromData(eventDataAUT3EV19)};
 
 
 void setup()
@@ -72,7 +76,7 @@ void setup()
 		automata[0] = Automaton(3,enabledEventStatesAutomaton0,&MakeTransitionAutomaton0_Motor,&Automaton0Loop_Motor);
 		automata[1] = Automaton(4,enabledEventStatesAutomaton1,&MakeTransitionAutomaton1_Andares,&Automaton1Loop_Andares);
 		automata[2] = Automaton(2,enabledEventStatesAutomaton2,&MakeTransitionAutomaton2_Porta,&Automaton2Loop_Porta);
-		supervisor[0] = Automaton(16,enabledEventStatesAutomaton3,&MakeTransitionAutomaton3_SupAndaresMotorPortaEspecificacaoSegurancaAndarMaximo4EspecificacaoSegurancaAndarMinimo1Portae2Portae1,&Automaton3Loop_SupAndaresMotorPortaEspecificacaoSegurancaAndarMaximo4EspecificacaoSegurancaAndarMinimo1Portae2Portae1);
+		supervisor[0] = Automaton(20,enabledEventStatesAutomaton3,&MakeTransitionAutomaton3_SupAndaresMotorPortaEspecificacaoSegurancaAndarMaximo4EspecificacaoSegurancaAndarMinimo1Portae2Portae3Portae1,&Automaton3Loop_SupAndaresMotorPortaEspecificacaoSegurancaAndarMaximo4EspecificacaoSegurancaAndarMinimo1Portae2Portae3Portae1);
 
     Serial.begin(9600);
     setupPin();

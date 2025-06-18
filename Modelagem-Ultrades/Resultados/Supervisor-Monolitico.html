@@ -1,0 +1,115 @@
+
+<!DOCTYPE HTML>
+<HTML>
+<HEAD>
+    <TITLE>Supervisor-Monolitico</TITLE>
+    <script src="https://github.com/mdaines/viz.js/releases/download/v1.8.0/viz.js"></script>
+</HEAD>
+<BODY>
+    <script type="text/vnd.graphviz" id="cluster">
+digraph {
+rankdir=TB;
+node [shape = doublecircle]; "A1|P|F|X|INI|P|Esp|F"  "A3|P|F|X|X|P|Esp|F"  "A4|P|F|FIM|X|P|Esp|F"  "A2|P|F|X|X|P|Esp|F" 
+node [shape = circle]; "A1|S|F|X|INI|D^S|Esp|F"  "A1|P|F|X|INI|P|Sol|F"  "A2|P|F|X|X|P|Sol|F"  "A2|P|A|X|X|P|Esp|A"  "A3|P|F|X|X|P|Sol|F"  "A4|P|F|FIM|X|P|Sol|F"  "A3|P|A|X|X|P|Esp|A"  "A4|P|A|FIM|X|P|Esp|A"  "A4|D|F|FIM|X|D^S|Esp|F"  "A3|D|F|X|X|D^S|Esp|F"  "A2|D|F|X|X|D^S|Esp|F"  "A3|S|F|X|X|D^S|Esp|F"  "A4|S|F|FIM|X|D^S|Esp|F"  "A2|S|F|X|X|D^S|Esp|F"  "A1|D|F|X|INI|D^S|Esp|F"  "A1|P|A|X|INI|P|Esp|A" 
+node [shape = point ]; Initial
+Initial -> "A1|P|F|X|INI|P|Esp|F";
+"A1|P|F|X|INI|P|Esp|F" -> "A2|P|F|X|X|P|Esp|F" [ label = "s_2" ];
+"A1|P|F|X|INI|P|Esp|F" -> "A1|S|F|X|INI|D^S|Esp|F" [ label = "subir" ];
+"A1|S|F|X|INI|D^S|Esp|F" -> "A2|S|F|X|X|D^S|Esp|F" [ label = "s_2" ];
+"A1|S|F|X|INI|D^S|Esp|F" -> "A1|P|F|X|INI|P|Sol|F" [ label = "parar" ];
+"A1|P|F|X|INI|P|Sol|F" -> "A2|P|F|X|X|P|Sol|F" [ label = "s_2" ];
+"A1|P|F|X|INI|P|Sol|F" -> "A1|P|A|X|INI|P|Esp|A" [ label = "abrir_porta" ];
+"A2|P|F|X|X|P|Sol|F" -> "A1|P|F|X|INI|P|Sol|F" [ label = "s_1" ];
+"A2|P|F|X|X|P|Sol|F" -> "A3|P|F|X|X|P|Sol|F" [ label = "s_3" ];
+"A2|P|F|X|X|P|Sol|F" -> "A2|P|A|X|X|P|Esp|A" [ label = "abrir_porta" ];
+"A2|P|A|X|X|P|Esp|A" -> "A1|P|A|X|INI|P|Esp|A" [ label = "s_1" ];
+"A2|P|A|X|X|P|Esp|A" -> "A3|P|A|X|X|P|Esp|A" [ label = "s_3" ];
+"A2|P|A|X|X|P|Esp|A" -> "A2|P|F|X|X|P|Esp|F" [ label = "fechar_porta" ];
+"A3|P|F|X|X|P|Sol|F" -> "A2|P|F|X|X|P|Sol|F" [ label = "s_2" ];
+"A3|P|F|X|X|P|Sol|F" -> "A4|P|F|FIM|X|P|Sol|F" [ label = "s_4" ];
+"A3|P|F|X|X|P|Sol|F" -> "A3|P|A|X|X|P|Esp|A" [ label = "abrir_porta" ];
+"A4|P|F|FIM|X|P|Sol|F" -> "A3|P|F|X|X|P|Sol|F" [ label = "s_3" ];
+"A4|P|F|FIM|X|P|Sol|F" -> "A4|P|A|FIM|X|P|Esp|A" [ label = "abrir_porta" ];
+"A3|P|A|X|X|P|Esp|A" -> "A2|P|A|X|X|P|Esp|A" [ label = "s_2" ];
+"A3|P|A|X|X|P|Esp|A" -> "A4|P|A|FIM|X|P|Esp|A" [ label = "s_4" ];
+"A3|P|A|X|X|P|Esp|A" -> "A3|P|F|X|X|P|Esp|F" [ label = "fechar_porta" ];
+"A4|P|A|FIM|X|P|Esp|A" -> "A3|P|A|X|X|P|Esp|A" [ label = "s_3" ];
+"A4|P|A|FIM|X|P|Esp|A" -> "A4|P|F|FIM|X|P|Esp|F" [ label = "fechar_porta" ];
+"A3|P|F|X|X|P|Esp|F" -> "A2|P|F|X|X|P|Esp|F" [ label = "s_2" ];
+"A3|P|F|X|X|P|Esp|F" -> "A4|P|F|FIM|X|P|Esp|F" [ label = "s_4" ];
+"A3|P|F|X|X|P|Esp|F" -> "A3|S|F|X|X|D^S|Esp|F" [ label = "subir" ];
+"A3|P|F|X|X|P|Esp|F" -> "A3|D|F|X|X|D^S|Esp|F" [ label = "descer" ];
+"A4|P|F|FIM|X|P|Esp|F" -> "A3|P|F|X|X|P|Esp|F" [ label = "s_3" ];
+"A4|P|F|FIM|X|P|Esp|F" -> "A4|D|F|FIM|X|D^S|Esp|F" [ label = "descer" ];
+"A4|D|F|FIM|X|D^S|Esp|F" -> "A3|D|F|X|X|D^S|Esp|F" [ label = "s_3" ];
+"A4|D|F|FIM|X|D^S|Esp|F" -> "A4|P|F|FIM|X|P|Sol|F" [ label = "parar" ];
+"A3|D|F|X|X|D^S|Esp|F" -> "A2|D|F|X|X|D^S|Esp|F" [ label = "s_2" ];
+"A3|D|F|X|X|D^S|Esp|F" -> "A4|D|F|FIM|X|D^S|Esp|F" [ label = "s_4" ];
+"A3|D|F|X|X|D^S|Esp|F" -> "A3|P|F|X|X|P|Sol|F" [ label = "parar" ];
+"A2|D|F|X|X|D^S|Esp|F" -> "A1|D|F|X|INI|D^S|Esp|F" [ label = "s_1" ];
+"A2|D|F|X|X|D^S|Esp|F" -> "A3|D|F|X|X|D^S|Esp|F" [ label = "s_3" ];
+"A2|D|F|X|X|D^S|Esp|F" -> "A2|P|F|X|X|P|Sol|F" [ label = "parar" ];
+"A3|S|F|X|X|D^S|Esp|F" -> "A2|S|F|X|X|D^S|Esp|F" [ label = "s_2" ];
+"A3|S|F|X|X|D^S|Esp|F" -> "A4|S|F|FIM|X|D^S|Esp|F" [ label = "s_4" ];
+"A3|S|F|X|X|D^S|Esp|F" -> "A3|P|F|X|X|P|Sol|F" [ label = "parar" ];
+"A4|S|F|FIM|X|D^S|Esp|F" -> "A3|S|F|X|X|D^S|Esp|F" [ label = "s_3" ];
+"A4|S|F|FIM|X|D^S|Esp|F" -> "A4|P|F|FIM|X|P|Sol|F" [ label = "parar" ];
+"A2|P|F|X|X|P|Esp|F" -> "A1|P|F|X|INI|P|Esp|F" [ label = "s_1" ];
+"A2|P|F|X|X|P|Esp|F" -> "A3|P|F|X|X|P|Esp|F" [ label = "s_3" ];
+"A2|P|F|X|X|P|Esp|F" -> "A2|S|F|X|X|D^S|Esp|F" [ label = "subir" ];
+"A2|P|F|X|X|P|Esp|F" -> "A2|D|F|X|X|D^S|Esp|F" [ label = "descer" ];
+"A2|S|F|X|X|D^S|Esp|F" -> "A1|S|F|X|INI|D^S|Esp|F" [ label = "s_1" ];
+"A2|S|F|X|X|D^S|Esp|F" -> "A3|S|F|X|X|D^S|Esp|F" [ label = "s_3" ];
+"A2|S|F|X|X|D^S|Esp|F" -> "A2|P|F|X|X|P|Sol|F" [ label = "parar" ];
+"A1|D|F|X|INI|D^S|Esp|F" -> "A2|D|F|X|X|D^S|Esp|F" [ label = "s_2" ];
+"A1|D|F|X|INI|D^S|Esp|F" -> "A1|P|F|X|INI|P|Sol|F" [ label = "parar" ];
+"A1|P|A|X|INI|P|Esp|A" -> "A2|P|A|X|X|P|Esp|A" [ label = "s_2" ];
+"A1|P|A|X|INI|P|Esp|A" -> "A1|P|F|X|INI|P|Esp|F" [ label = "fechar_porta" ];
+}
+    </script>
+        <div style="height: 50px; width: 100%;">
+            <button type = "button" onclick = "downloadSVG('Supervisor-Monolitico.svg')" > Save as SVG</button>
+            <button type = "button" onclick = "downloadPNG('Supervisor-Monolitico.png')" > Save as PNG</button>
+        </div>
+         
+    <script>
+        function example(id) {
+                var result;
+            try {
+                let src = document.getElementById(id).innerHTML;
+                result = Viz(src, { format: 'svg', engine: 'dot', scale: undefined, totalMemory: 1024*1024*1024, files: undefined, images: undefined });               
+                
+                return result;
+            } 
+            catch(e) {
+                console.log(e);
+            }
+        }
+
+        function downloadSVG(fileName) {
+            var content = example('cluster');
+            var a = document.createElement('a');
+            var file = new Blob([content], {type: 'text/plain'});
+            a.href = URL.createObjectURL(file);
+            a.download = fileName;
+            a.click();
+        }
+
+        function downloadPNG(fileName) {
+            Viz.svgXmlToPngImageElement(example('cluster'), undefined, (err, img) => {
+                    const source = img.src;
+                    const a = document.createElement('a');
+                    document.body.appendChild(a);
+
+                    a.href = source;
+                    a.target = '_self';
+                    a.download = fileName;
+                    a.click();
+                }); 
+         }
+
+        document.body.innerHTML += example("cluster", "svg");
+    </script>
+</BODY>
+</HTML>
+

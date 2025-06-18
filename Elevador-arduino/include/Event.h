@@ -36,8 +36,8 @@ void printEvent(const Event event);
 #define EVENT_SUBIR 8
 #define EVENT_PARAR 7
 #define EVENT_DESCER 6
-#define EVENT_S_1 5
-#define EVENT_S_2 4
+#define EVENT_S_2 5
+#define EVENT_S_1 4
 #define EVENT_S_3 3
 #define EVENT_S_4 2
 #define EVENT_FECHAR_PORTA 1

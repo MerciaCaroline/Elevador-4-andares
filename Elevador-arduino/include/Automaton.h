@@ -39,7 +39,7 @@ void Automaton1Loop_Andares(int State);
 
 void Automaton2Loop_Porta(int State); 
 
-void Automaton3Loop_SupAndaresMotorPortaEspecificacaoSegurancaAndarMaximo4EspecificacaoSegurancaAndarMinimo1Portae2Portae1(int State); 
+void Automaton3Loop_SupAndaresMotorPortaEspecificacaoSegurancaAndarMaximo4EspecificacaoSegurancaAndarMinimo1Portae2Portae3Portae1(int State); 
 
 
 
@@ -49,8 +49,8 @@ bool EventControllable_descer();
 bool EventControllable_abrir_porta();
 
 
-bool EventUncontrollable_s_1();
 bool EventUncontrollable_s_2();
+bool EventUncontrollable_s_1();
 bool EventUncontrollable_s_3();
 bool EventUncontrollable_s_4();
 bool EventUncontrollable_fechar_porta();
@@ -73,7 +73,7 @@ void StateActionAutomaton2_PortaState1();
 int MakeTransitionAutomaton0_Motor(int State, Event eventOccurred);
 int MakeTransitionAutomaton1_Andares(int State, Event eventOccurred);
 int MakeTransitionAutomaton2_Porta(int State, Event eventOccurred);
-int MakeTransitionAutomaton3_SupAndaresMotorPortaEspecificacaoSegurancaAndarMaximo4EspecificacaoSegurancaAndarMinimo1Portae2Portae1(int State, Event eventOccurred);
+int MakeTransitionAutomaton3_SupAndaresMotorPortaEspecificacaoSegurancaAndarMaximo4EspecificacaoSegurancaAndarMinimo1Portae2Portae3Portae1(int State, Event eventOccurred);
 
 
 #endif

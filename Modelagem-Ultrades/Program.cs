@@ -20,27 +20,47 @@ class Program
         var PlantaPorta = CriarPlantaPorta();
         var especificacao_movimentar = CriarEspecificacaoPortaFechadaSubir();
         var especificacao_abrir = CriarEspecificacaoAbrirPorta();
-        var Especificacao_porta = especificacao_abrir.ParallelCompositionWith(especificacao_movimentar);
+        var especificacao_chamada = CriarEspecificacaoAbrirPortaSolicitado();
+        var Especificacao_porta = especificacao_abrir
+            .ParallelCompositionWith(especificacao_movimentar)
+            .ParallelCompositionWith(especificacao_chamada);
 
         var planta = PlantaElevador.ParallelCompositionWith(PlantaPorta);
+
+        //////planta.showAutomaton("planta-composicao");
+
+        //Especificacao_elevador.ShowAutomaton("Especificacao-elevador");
+        //Especificacao_porta.ShowAutomaton("Especificacao-porta");
+
+
         var especificacao = Especificacao_elevador.ParallelCompositionWith(Especificacao_porta);
 
-        //foreach (var s in planta.Transitions) { Console.WriteLine(s); }
+        //especificacao.ShowAutomaton("Especificacao-completa"); 
 
         var Supervisor = DeterministicFiniteAutomaton.MonolithicSupervisor(
             new[] { andares, motor, PlantaPorta },
-            new[] { especificacao_max, especificacao_min, especificacao_abrir, especificacao_movimentar },
+            new[] { especificacao_max, especificacao_min, especificacao_abrir, especificacao_chamada, especificacao_movimentar },
             true);
 
+        //var modular = DeterministicFiniteAutomaton.LocalModularSupervisor(
+        //    new[] { andares, motor, PlantaPorta },
+        //    new[] { especificacao_max, especificacao_min, especificacao_abrir, especificacao_chamada, especificacao_movimentar });
 
-        //planta.ShowAutomaton("PlantaElevador");
-        //especificacao.ShowAutomaton("Especificacao");
-        //Supervisor.ShowAutomaton("Supervisor-Monolitico");
 
-        INOGenerator.ConvertDEStoINO(
-            new[] { motor, andares, PlantaPorta }.ToList(), 
-            new[] { Supervisor }.ToList());
-    }
+        //PlantaElevador.ShowAutomaton("PlantaElevador");
+        //PlantaPorta.ShowAutomaton("PlantaPorta");
+        //Especificacao_elevador.ShowAutomaton("Especificacao-elevador");
+        //Especificacao_porta.ShowAutomaton("Especificacao-porta");
+        Supervisor.ShowAutomaton("Supervisor-Monolitico");
+        //foreach (var automaton in modular)
+        //{
+        //    automaton.ShowAutomaton($"Supervisor-Modular-{automaton.Name}");
+        //}
+
+    //    INOGenerator.ConvertDEStoINO(
+    //        new[] { motor, andares, PlantaPorta }.ToList(),
+    //        new[] { Supervisor }.ToList());
+    //}
 
     // Função que cria o autômato do motor (subir, descer, parar)
     static DeterministicFiniteAutomaton CriarMotor()
@@ -59,9 +79,6 @@ class Program
             new Transition(S, p, P),
             new Transition(P, d, D),
             new Transition(D, p, P),
-            new Transition(D,d,D),
-            new Transition(S,s,S),
-            new Transition(P,p,P)
         };
 
         var motor = new DeterministicFiniteAutomaton(transicoes, P, "Motor");
@@ -84,15 +101,15 @@ class Program
 
         var transicoes = new[]
         {
-            new Transition(andar1, s_1, andar1),
+            //new Transition(andar1, s_1, andar1),
             new Transition(andar1, s_2, andar2),
-            new Transition(andar2, s_2, andar2),
+            //new Transition(andar2, s_2, andar2),
             new Transition(andar2, s_1, andar1),
             new Transition(andar2, s_3, andar3),
-            new Transition(andar3, s_3, andar3),
+            //new Transition(andar3, s_3, andar3),
             new Transition(andar3, s_2, andar2),
             new Transition(andar3, s_4, andar4),
-            new Transition(andar4, s_4, andar4),
+            //new Transition(andar4, s_4, andar4),
             new Transition(andar4, s_3, andar3)
         };
 
@@ -122,7 +139,6 @@ class Program
             new Transition(j, s_2, j),
             new Transition(j, s_3, j),
             new Transition(j, s, j),
-            new Transition(andar4, s_4, andar4),
             new Transition(andar4, s_3, j),
             new Transition(andar4, s_2, j),
             new Transition(andar4, s_1, j),
@@ -153,7 +169,6 @@ class Program
             new Transition(j, s_2, j),
             new Transition(j, s_3, j),
             new Transition(j, d, j),
-            new Transition(andar1, s_1, andar1),
             new Transition(andar1, s_3, j),
             new Transition(andar1, s_2, j),
             new Transition(andar1, s_4, j),
@@ -177,8 +192,6 @@ class Program
         {
             new Transition(Fechada, abrir, Aberta),
             new Transition(Aberta, fechar, Fechada),
-            new Transition(Aberta, abrir, Aberta),
-            new Transition(Fechada, fechar, Fechada)
         };
 
         var Porta = new DeterministicFiniteAutomaton(transicoes, Fechada, "Porta");
@@ -201,10 +214,8 @@ class Program
         {
             new Transition(Fechada, abrir, Aberta),
             new Transition(Aberta, fechar, Fechada),
-            new Transition(Aberta, abrir, Aberta),
             new Transition(Fechada, s, Fechada),
             new Transition(Fechada, d, Fechada),
-            new Transition(Fechada, fechar, Fechada)
         };
 
         var Porta = new DeterministicFiniteAutomaton(transicoes, Fechada, "Porta_e1");
@@ -230,13 +241,42 @@ class Program
             new Transition(Parado, d, Movendo),
             new Transition(Parado, s, Movendo),
             new Transition(Movendo, p, Parado),
-            new Transition(Parado, p, Parado),
             new Transition(Movendo, d, Movendo),
             new Transition(Movendo, s, Movendo),
         };
 
         var Porta = new DeterministicFiniteAutomaton(transicoes, Parado, "Porta_e2");
         //Porta.ShowAutomaton("Porta_e2");
+        return Porta;
+    }
+
+    // Função que cria a Especificação que obriga abrir a porta ao chegar no andar solicitado
+    static DeterministicFiniteAutomaton CriarEspecificacaoAbrirPortaSolicitado()
+    {
+        var Espera = new State("Esp", Marking.Marked);
+        var Solicitado = new State("Sol", Marking.Unmarked);
+        var Atender = new State("At", Marking.Unmarked);
+
+        var abrir = new Event("abrir_porta", Controllability.Controllable);
+        var fechar = new Event("fechar_porta", Controllability.Uncontrollable);
+
+
+        var s = new Event("subir", Controllability.Controllable);
+        var d = new Event("descer", Controllability.Controllable);
+        var p = new Event("parar", Controllability.Controllable);
+
+        var transicoes = new[]
+        {
+            new Transition(Espera, p, Solicitado),
+            new Transition(Espera, s, Espera),
+            new Transition(Espera, d, Espera),
+            new Transition(Solicitado, abrir, Espera)
+            //new Transition(Solicitado, abrir, Atender),
+            //new Transition(Atender, fechar, Espera)
+        };
+
+        var Porta = new DeterministicFiniteAutomaton(transicoes, Espera, "Porta_e3");
+        //Porta.ShowAutomaton("Porta_e3");
         return Porta;
     }
 
